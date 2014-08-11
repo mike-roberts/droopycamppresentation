@@ -1,0 +1,88 @@
+/**
+ * Sky theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+$light:                           #ffffff !default;
+$stable:                          #f0f0f0 !default;
+$positive:                        #2bd79c !default;
+$calm:                            #2abdd7 !default;
+$balanced:                        #2094a9 !default;
+$energized:                       #ffad00 !default;
+$assertive:                       #e84b16 !default;
+$royal:                           #a42a2a !default;
+$dark:                            #434343 !default;
+$black:                           #000000 !default;
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Open Sans', sans-serif;
+$mainColor: $light;
+$headingFont: 'Varela Round', sans-serif;
+$headingColor: $light;
+$headingLetterSpacing: -0.08em;
+$headingTextShadow: none;
+$backgroundColor: $calm;
+$linkColor: darken($stable, 5);
+$linkColorHover: darken($stable, 15);
+$selectionBackgroundColor: $dark;
+
+// Fix links so they are not cut off
+// .reveal a:not(.image) {
+// 	line-height: 1.3em;
+// }
+
+// Background generator
+@mixin bodyBackground() {
+	@include radial-gradient( darken($backgroundColor,5), $backgroundColor );
+}
+
+iframe {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  max-width: 100%;
+}
+
+.iphone-container {
+	background-image: url('../../img/iphone5.png');
+	background-repeat: no-repeat;
+	margin: 0 auto !important;
+	padding: 147px 0px 0px 0px !important;
+	width: 375px;
+	height: 806px;
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal section img {
+  background: none;
+  border: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.reveal pre {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
