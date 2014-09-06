@@ -61,7 +61,7 @@ body {
   color: white;
   font-family: "Varela Round", sans-serif;
   line-height: 0.9em;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
   text-shadow: none; }
 
@@ -170,3 +170,12 @@ body {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none; }
+
+.reveal a:not(.image) {
+  color: #7ef298; }
+
+.reveal a:not(.image):hover, .reveal a:not(.image):active {
+  color: #c3f9cf; }
+
+a:visited {
+  color: #39eb61; }

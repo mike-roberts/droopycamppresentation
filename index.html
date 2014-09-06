@@ -45,11 +45,10 @@
 				<!-- Title Slide -->
 				<section>
 					<h2>Building Mobile Apps with Cordova, Ionic Framework, and Drupal.</h2>
-					
 					<p>
-						<small>Created by <a href="http://hakim.se">Mike Roberts</a> / <a href="http://twitter.com/michaelaroberts">@michaelaroberts</a></small>
+						<small><a href="http://www.michaelandrewroberts.com">Mike Roberts</a> / <a href="http://twitter.com/michaelaroberts">@michaelaroberts</a></small>
 					</p>
-										<p>
+					<p>
 						<small>Product Engineer <a href="http://twitter.com/card">@card</a></small>
 					</p>
 				</section>
@@ -60,7 +59,7 @@
 				<!-- App Example slide -->
 				<section>
 					<div class="iphone-container">
-						<iframe src="http://0.0.0.0:8001/ios/www/#/" width="320" height="548"></iframe>
+						<iframe src="http://localhost:8100/" width="320" height="548"></iframe>
 					</div>
 				</section>
 
@@ -157,20 +156,46 @@ function droopycamp_api_sessions($type) {
 				</section>
 				<!--  -->
 				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
+					<h2>Tips & Tricks to <em>speed up development</em></h2>
+					<p>They're slanted because they're going faster...</p>
 				</section>
 
 				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
+					<section>
+						<h2>#1 Gulp/Grunt</h2>
+						<p>Gulp and Grunt aren't just for mobile development, if you're a frontend developer you should look at integrating them into your daily workflow.</p>
+					</section>
+					<section>
+						<pre>
+var gulp = require('gulp'), gutil = require('gulp-util'), concat = require('gulp-concat'), sass = require('gulp-sass'), minifyCss = require('gulp-minify-css'), rename = require('gulp-rename'), sh = require('shelljs');
+
+var paths = {
+  sass: ['./scss/**/*.scss']
+};
+
+gulp.task('default', ['sass']);
+
+gulp.task('sass', function(done) {
+  gulp.src('./scss/ionic.app.scss').pipe(sass()).pipe(gulp.dest('./www/css/')).pipe(minifyCss({keepSpecialComments: 0})).pipe(rename({ extname: '.min.css' })).pipe(gulp.dest('./www/css/')).on('end', done);
+});
+
+gulp.task('watch', function() {
+  livereload.listen();
+  gulp.watch(paths.sass, ['sass']).on('change', livereload.changed);
+
+});
+
+gulp.task('prepare', function() {
+  sh.exec('cordova prepare ios');
+  sh.exec('cordova prepare android');
+});
+
+gulp.task('serve', ['prepare'], function() {
+  sh.exec('ionic serve');
+});
+
+						</pre>
+					</section>
 				</section>
 
 				<section>
@@ -398,8 +423,8 @@ Reveal.addEventListener( 'customevent', function() {
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+				theme: 'cardcom', // available themes are in /css/theme
+				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',

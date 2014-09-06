@@ -18,7 +18,7 @@
 
 $light:                           #ffffff !default;
 $stable:                          #f0f0f0 !default;
-$positive:                        #2bd79c !default;
+$positive:                        #7EF298 !default;
 $calm:                            #2abdd7 !default;
 $balanced:                        #2094a9 !default;
 $energized:                       #ffad00 !default;
@@ -33,7 +33,7 @@ $mainFont: 'Open Sans', sans-serif;
 $mainColor: $light;
 $headingFont: 'Varela Round', sans-serif;
 $headingColor: $light;
-$headingLetterSpacing: -0.08em;
+$headingLetterSpacing: -0.04em;
 $headingTextShadow: none;
 $backgroundColor: $calm;
 $linkColor: darken($stable, 5);
@@ -85,4 +85,14 @@ iframe {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+.reveal a:not(.image) {
+  color: $positive;
+}
+.reveal a:not(.image):hover, .reveal a:not(.image):active {
+  color: lighten($positive, 15);
+}
+a:visited {
+  color: darken($positive, 15)
 }
