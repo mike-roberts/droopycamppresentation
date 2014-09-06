@@ -59,7 +59,7 @@
 				<!-- App Example slide -->
 				<section>
 					<div class="iphone-container">
-						<iframe src="http://localhost:8100/" width="320" height="548"></iframe>
+						<iframe src="http://169.234.111.167:8100/#/app/home" width="320" height="548"></iframe>
 					</div>
 				</section>
 
@@ -98,7 +98,7 @@
 						<li>Node.js</li>
 						<li>Cordova</li>
 						<li>A publicly accessible place to host your website. If you're doing development, you can use Pantheon for free until you need a custom domain or ssl, etc.</li>
-						<li>More stuff here.</li>
+						<li>Basic knowledge of JS & HTML</li>
 					</ul>
 				</section>
 				<section>
@@ -109,6 +109,10 @@
 						</p>
 					</section>
 					<section>
+						<h2>Services</h2>
+						<p>The easiest way to get set up is using the services module. Services integrates well with views so it's pretty easy to get that all set up and running.</p>
+					</section>
+					<section>
 						<h2>Set up api page</h2>
 						<pre>
 							<code data-trim contenteditable class="php">
@@ -117,10 +121,9 @@
  */
 function droopycamp_menu() {
   $items = array();
-  $items['api/sessions/%'] = array(
+  $items['api/sessions'] = array(
     'title' => 'Sessions',
 	  'page callback' => 'droopycamp_api_sessions',
-	  'page arguments' => array(2),
 	  'access callback' => TRUE,
   );
   return $items;
@@ -143,10 +146,7 @@ function droopycamp_api_sessions($type) {
   $data = array();
   $data = db_select('node', 'node')
     ->condition('type', 'session')
-  if ($type) {
-    ->condition('type', 'session')
-  }
-  ->execute()->fetchAll()
+  	->execute()->fetchAll();
   print drupal_json_encode($data);
   drupal_exit();
 }
@@ -154,16 +154,39 @@ function droopycamp_api_sessions($type) {
 						</pre>
 					</section>
 				</section>
+				<section>
+					<section>
+						<h2>The App</h2>
+					</section>
+					<section>
+						<h2>First Step</h2>
+						<p>
+							$ ionic start appName sidemenu
+						</p>
+						<p>
+							<br />
+						</p>
+						<p>This gives you an app skeleton with a few pages, a login popup and full hamburger menu functionality.</p>
+						<p>http://ionicframework.com/getting-started/</p>
+					</section>
+					<section>
+						<h2>Now add your content</h2>
+						<p>Angular structure - there are three main files, app.js, controllers.js, and services.js.</p>
+						<p>Add templates in the templates folder
+					</section>
+					<section>
+						<h2>Build your app</h2>
+						<p><pre>$ cordova build ios && cordova build android</pre></p>
+					</section>
+				</section>
 				<!--  -->
 				<section>
 					<h2>Tips & Tricks to <em>speed up development</em></h2>
-					<p>They're slanted because they're going faster...</p>
 				</section>
-
 				<section>
 					<section>
 						<h2>#1 Gulp/Grunt</h2>
-						<p>Gulp and Grunt aren't just for mobile development, if you're a frontend developer you should look at integrating them into your daily workflow.</p>
+						<p>Gulp and Grunt aren't just for mobile development and they essentially allow you to chain a bunch of functionality together to make your life a lot easier. You can watch your sass files, run a server, and have live reload all from running one command from terminal. If you're a frontend developer and you're not already using one of these or a similar tool, you should probably look into it.</p>
 					</section>
 					<section>
 						<pre>
@@ -199,194 +222,30 @@ gulp.task('serve', ['prepare'], function() {
 				</section>
 
 				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a> -
-						<a href="?theme=cardcom#/themes">CARD.COM</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
+					<h2>#2 Develop & Test in the browser</h2>
+					<p> An easy way to run a local server
+						<pre>$ python -m SimpleHTTPServer</pre>
 					</p>
 				</section>
 
 				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
+					<section>
+						<h2>#3 Cordova Hooks</h2>
+						<p>Cordova has hooks similar to git hooks that you can run after certain actions happen.</p>
+						<p><a href="http://devgirl.org/2013/11/12/three-hooks-your-cordovaphonegap-project-needs/">http://devgirl.org/2013/11/12/three-hooks-your-cordovaphonegap-project-needs/</a></p>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
+						<p>The cordova hooks are just javascript files that can do pretty much anything gulp/grunt/node can do.</p>
+						<p><br></p>
+						<p>My favorite hook is the after_prepare hook that copies you app icons to all the correct places when you run `cordova prepare` or `cordova build`
 					</section>
 				</section>
 
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
+					<h2>#4 Remember that Angular is based on dependency injection</h2>
+					<pre>
+						
+					</pre>
 				</section>
 
 				<section>
@@ -402,7 +261,7 @@ Reveal.addEventListener( 'customevent', function() {
 				</section>
 
 				<section>
-					<h1>THE END</h1>
+					<h1>THE END?</h1>
 					<h3>Any questions?</h3>
 				</section>
 
